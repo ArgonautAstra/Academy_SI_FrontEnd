@@ -1,0 +1,49 @@
+
+#get-started{
+  background-color: #F7E7DC;
+  margin: 5%;
+  margin-left: 10%;
+  padding: 5%;
+}
+
+#get-started h1{
+  color: #405D72;
+}
+
+#get-started h1 span{
+  font-weight: bold;
+}
+
+#get-started h5{
+  color: #758694;
+}
+
+#get-started a{
+  margin: 2%;
+  margin-top: 5%;
+  width: 40%;
+}
+
+#started{
+  background-color: #405D72;
+  border-color: #F7E7DC;
+  color: #F7E7DC;
+}
+
+#started:hover{
+  background-color: #F7E7DC;
+  border-color: #405D72;
+  color: #405D72;
+}
+
+#signup{
+  background-color: #F7E7DC;
+  border-color: #405D72;
+  color: #405D72;
+}
+
+#signup:hover{
+  background-color: #405D72;
+  border-color: white;
+  color: white;
+}

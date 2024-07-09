@@ -1,0 +1,34 @@
+
+<form class="row g-3 needs-validation" novalidate>
+
+  <h4>{{title}}</h4>
+
+  <div class="form-floating col-md-6">
+    <input [(ngModel)]="this.signUpRequest.firstname" name="firstname" type="text" class="form-control" id="firstname_id" placeholder="Firstname" required>
+    <label for="firstname_id">Firstname</label>
+  </div>
+
+  <div class="form-floating col-md-6">
+    <input [(ngModel)]="this.signUpRequest.lastname" name="lastname" type="text" class="form-control" id="lastname_id" placeholder="Lastname" required>
+    <label for="lastname_id">Lastname</label>
+  </div>
+
+  <div class="form-floating col-md-12">
+    <input [(ngModel)]="this.signUpRequest.email" name="lastname" type="email" class="form-control" id="email_id" placeholder="Email" required>
+    <label for="email_id">Email</label>
+  </div>
+
+  <div class="form-floating col-md-6">
+    <input [(ngModel)]="this.signUpRequest.password" name="lastname" type="password" class="form-control" id="password_id" placeholder="Password" required>
+    <label for="password_id" class="form-label">Password</label>
+  </div>
+
+  <div class="form-floating col-md-6">
+    <input type="password" class="form-control" id="conf_password_id" placeholder="Password" required (input)="confirmPsw($event)">
+    <label for="conf_password_id" class="form-label">Confirm password</label>
+  </div>
+
+  <div class="col-12 text-end">
+    <button (click)="submit()"  class="btn btn-dark rounded-pill" type="submit" [disabled]="this.disabled">Sign Up</button>
+  </div>
+</form>

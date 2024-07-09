@@ -1,0 +1,19 @@
+
+<form class="row g-3 needs-validation" novalidate>
+
+  <h4>{{title}}</h4>
+
+  <div class="form-floating col-md-12">
+    <input [(ngModel)]="this.signInRequest.email" name="email" type="email" class="form-control" id="email_id" placeholder="Email" required>
+    <label for="email_id">Email</label>
+  </div>
+
+  <div class="form-floating col-md-12">
+    <input [(ngModel)]="this.signInRequest.password" name="password" type="password" class="form-control" id="password_id" placeholder="Password" required>
+    <label for="password_id" class="form-label">Password</label>
+  </div>
+
+  <div class="col-12 text-end">
+    <button (click)="submit()" class="btn btn-dark rounded-pill" type="submit">Sign in</button>
+  </div>
+</form>

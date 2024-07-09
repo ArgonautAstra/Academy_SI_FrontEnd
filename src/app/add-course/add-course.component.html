@@ -1,0 +1,40 @@
+
+<form class="row g-3 needs-validation" novalidate>
+
+  <h4>{{title}}</h4>
+
+  <div class="form-floating col-md-6">
+    <input [(ngModel)]="this.addCourseRequest.name" name="name" type="text" class="form-control" id="name_id" placeholder="Name course" required>
+    <label for="name_id">Name course</label>
+  </div>
+
+  <div class="form-floating col-md-6">
+    <input [(ngModel)]="this.addCourseRequest.description_summ" name="description_summ" type="text" class="form-control" id="summary_id" placeholder="Description summary" required>
+    <label for="summary_id">Description summary</label>
+  </div>
+
+  <div class="form-floating col-md-8">
+    <textarea [(ngModel)]="this.addCourseRequest.description_full" name="description_full" class="form-control" id="full_id" placeholder="Description full" required></textarea>
+    <label for="full_id">Description full</label>
+  </div>
+
+  <div class="form-floating col-md-4">
+    <select [(ngModel)]="this.addCourseRequest.category" name="category" class="form-select" aria-label="Default select example" id="category_id" placeholder="Category" required>
+      <option value="html">HTML</option>
+      <option value="css">CSS</option>
+      <option value="javascript">JavasScript</option>
+      <option value="c">C</option>
+      <option value="plus">C++</option>
+      <option value="sharp">C#</option>
+      <option value="java">Java</option>
+      <option value="spring">Spring</option>
+      <option value="angular">Angular</option>
+      <option value="python">Python</option>
+    </select>
+    <label for="category_id">Category</label>
+  </div>
+
+  <div class="col-12 text-end">
+    <button (click)="submit()" class="btn btn-dark rounded-pill" type="submit">Add</button>
+  </div>
+</form>

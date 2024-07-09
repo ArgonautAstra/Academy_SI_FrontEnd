@@ -1,0 +1,14 @@
+
+#carousel div{
+  color: white;
+}
+
+#carousel button.carousel-control-prev{
+  width: 10%;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(30, 30, 30, 0.8) 100%);
+}
+
+#carousel button.carousel-control-next{
+  width: 10%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(30, 30, 30, 0.8) 100%);
+}
