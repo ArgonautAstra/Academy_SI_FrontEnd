@@ -9,27 +9,23 @@
   </div>
 
   <div class="form-floating col-md-6">
-    <input [(ngModel)]="this.addCourseRequest.description_summ" name="description_summ" type="text" class="form-control" id="summary_id" placeholder="Description summary" required>
+    <input [(ngModel)]="this.addCourseRequest.descriptionSumm" name="description_summ" type="text" class="form-control" id="summary_id" placeholder="Description summary" required>
     <label for="summary_id">Description summary</label>
   </div>
 
-  <div class="form-floating col-md-8">
-    <textarea [(ngModel)]="this.addCourseRequest.description_full" name="description_full" class="form-control" id="full_id" placeholder="Description full" required></textarea>
+  <div class="form-floating col-md-6">
+    <textarea [(ngModel)]="this.addCourseRequest.descriptionFull" name="description_full" class="form-control" id="full_id" placeholder="Description full" required></textarea>
     <label for="full_id">Description full</label>
+  </div>
+
+  <div class="form-floating col-md-2">
+    <input [(ngModel)]="this.addCourseRequest.duration" name="duration" type="number" class="form-control" id="duration_id" placeholder="Duration" required>
+    <label for="duration_id">Duration</label>
   </div>
 
   <div class="form-floating col-md-4">
     <select [(ngModel)]="this.addCourseRequest.category" name="category" class="form-select" aria-label="Default select example" id="category_id" placeholder="Category" required>
-      <option value="html">HTML</option>
-      <option value="css">CSS</option>
-      <option value="javascript">JavasScript</option>
-      <option value="c">C</option>
-      <option value="plus">C++</option>
-      <option value="sharp">C#</option>
-      <option value="java">Java</option>
-      <option value="spring">Spring</option>
-      <option value="angular">Angular</option>
-      <option value="python">Python</option>
+      <option *ngFor="let item of categories" [value]="item?.id">{{item?.name}}</option>
     </select>
     <label for="category_id">Category</label>
   </div>

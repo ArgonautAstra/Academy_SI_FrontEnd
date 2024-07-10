@@ -33,8 +33,6 @@ export class CoursesComponent  implements OnInit{
   {
     let grouped = [];
 
-    console.log(courses_data);
-
     for(let i = 0; i < courses_data.length; i += dimension)
       grouped.push(courses_data.slice(i, i + dimension))
 

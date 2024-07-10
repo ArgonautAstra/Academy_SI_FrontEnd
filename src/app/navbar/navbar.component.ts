@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, DoCheck, Input} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,12 +7,12 @@ import {Component, Input} from '@angular/core';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
-
-  searchQuery : string = "";
+export class NavbarComponent{
 
   @Input()
   email : string;
+
+  searchQuery : string = "";
 
   onUpdate(event : Event){
 

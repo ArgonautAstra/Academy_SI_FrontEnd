@@ -1,8 +1,8 @@
 export class UserDto{
 
-  id:number
-  firstname:string
-  lastname:string
-  email:string
+  id:number;
+  firstname:string;
+  lastname:string;
+  email:string;
 
 }

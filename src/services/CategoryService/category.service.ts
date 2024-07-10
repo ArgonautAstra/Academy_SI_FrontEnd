@@ -1,24 +1,17 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {CourseDto} from "../../model/CourseDto";
 import {catchError, Observable, retry, throwError} from "rxjs";
-import {AddCourseRequest} from "../../model/AddCourseRequest";
+import {CategoryDto} from "../../model/CategoryDto";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CourseService {
+export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getAll() : Observable<CourseDto[]> {
-    return this.http.get<CourseDto[]>('http://localhost:8080/api/course/').pipe(
-      retry(3),
-      catchError(this.handleError))
-  }
-
-  add(course : AddCourseRequest) : Observable<void> {
-    return this.http.post<void>('http://localhost:8080/api/course/add', course).pipe(
+  getAll() : Observable<CategoryDto[]> {
+    return this.http.get<CategoryDto[]>('http://localhost:8080/api/category/').pipe(
       retry(3),
       catchError(this.handleError))
   }
@@ -34,5 +27,4 @@ export class CourseService {
     }
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
-
 }
