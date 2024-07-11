@@ -4,14 +4,18 @@ import {SignInRequest} from "../../model/SignInRequest";
 import {UserService} from "../../services/UserService/user.service";
 import {UserDto} from "../../model/UserDto";
 import {NgClass, NgIf} from "@angular/common";
+import {FooterComponent} from "../footer/footer.component";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
   imports: [
+    FooterComponent,
     FormsModule,
     NgClass,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
@@ -22,7 +26,7 @@ export class SignInComponent {
 
   signInRequest : SignInRequest = new SignInRequest();
 
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService, private router : Router) { }
 
   @Output("userNameEvent")
   requestEvent = new EventEmitter<string>();
@@ -30,24 +34,25 @@ export class SignInComponent {
   @Output("userId")
   requestEventId = new EventEmitter<number>();
 
-  submit(){
+  @ViewChild('f',{static:true}) signInForm!:NgForm;
+
+  submit(form : NgForm){
+
     console.log(this.signInRequest);
 
     this.userService.getUserByEmail(this.signInRequest.email).subscribe((result:UserDto) =>{
       console.log(result);
       this.requestEvent.emit(result.firstname + " " + result.lastname);
       this.requestEventId.emit(result.id);
+
+      this.userService.signIn(this.signInRequest).subscribe((result:any) =>{
+        console.log(result.token);
+
+        localStorage.setItem('access_token', result.token);
+        localStorage.setItem('user_email', (this.signInRequest.email));
+
+        this.router.navigate([""]);
+      })
     })
-
-    this.userService.signIn(this.signInRequest).subscribe((result:any) =>{
-      console.log(result.token);
-    })
-
-  }
-
-  @ViewChild('f',{static:true}) loginForm!:NgForm;
-
-  loginSubmit(form : NgForm){
-    this.loginForm.reset();
   }
 }

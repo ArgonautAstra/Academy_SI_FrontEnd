@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormsModule, NgForm} from "@angular/forms";
 import {AddCourseRequest} from "../../model/AddCourseRequest";
 import {CategoryService} from "../../services/CategoryService/category.service";
 import {CategoryDto} from "../../model/CategoryDto";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {CourseService} from "../../services/CourseService/course.service";
 
 @Component({
@@ -11,7 +11,8 @@ import {CourseService} from "../../services/CourseService/course.service";
   standalone: true,
   imports: [
     FormsModule,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './add-course.component.html',
   styleUrl: './add-course.component.css'
@@ -32,10 +33,14 @@ export class AddCourseComponent implements OnInit{
 
   addCourseRequest : AddCourseRequest = new AddCourseRequest();
 
-  submit() {
+  @ViewChild('f',{static:true}) addCourseForm!:NgForm;
+
+  submit(form : NgForm) {
     console.log(this.addCourseRequest);
     this.courseService.add(this.addCourseRequest).subscribe(() => {
       console.log(this.addCourseRequest);
     })
+
+    this.addCourseForm.reset();
   }
 }

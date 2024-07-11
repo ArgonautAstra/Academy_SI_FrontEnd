@@ -10,3 +10,14 @@ button:hover{
   border-color: #405D72;
   color: #405D72;
 }
+
+input.ng-valid{
+  background-color: rgba(0,128,10,0.2);
+  transition: 0.5s;
+}
+
+.invalid{
+  color: orangered !important;
+  font-weight: bold;
+}
+

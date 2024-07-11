@@ -1,12 +1,11 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {NavbarComponent} from "./navbar/navbar.component";
 import {MainComponent} from "./main/main.component";
 import {FooterComponent} from "./footer/footer.component";
 import {UserService} from "../services/UserService/user.service";
 import {UserDto} from "../model/UserDto";
-import {CourseService} from "../services/CourseService/course.service";
-import {CourseDto} from "../model/CourseDto";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,8 @@ import {CourseDto} from "../model/CourseDto";
     RouterOutlet,
     NavbarComponent,
     MainComponent,
-    FooterComponent
+    FooterComponent,
+    NgIf
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -26,7 +26,15 @@ export class AppComponent implements OnInit{
 
   email : string;
 
-  constructor(private userService: UserService) { }
+  isLogged : boolean = false;
+
+  constructor(private userService: UserService, private router : Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isLogged = this.router.url === "/login";
+      }
+    })
+  }
 
   ngOnInit(){
     this.userService.getAll().subscribe((result:UserDto[]) =>{
